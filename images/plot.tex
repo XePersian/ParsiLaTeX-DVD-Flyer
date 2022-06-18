@@ -1,0 +1,29 @@
+%\documentclass[landscape]{article}
+\documentclass{standalone}
+
+\usepackage{pstricks,pstricks-add,pst-3dplot,pst-func,fourier}
+%\usepackage[active,tightpage]{preview}
+%\PreviewEnvironment{pspicture}
+%\setlength\PreviewBorder{-10pt}
+%a+b
+%a b add 
+\newcommand*\func{ x 3 exp x y 4 exp mul add x 5
+  div sub 10 mul 2.729 x dup mul y dup mul add
+  neg exp mul 2.729 x 1.225 sub dup mul y dup
+  mul add neg exp add }
+
+\begin{document}
+\pagestyle{empty}
+%\begin{figure}[ht]
+%\centering
+\begin{pspicture}(-4.2,-2.5)(4.2,3.3)
+  \psset{Alpha=45,Beta=15,unit=0.75}
+  \psplotThreeD[plotstyle=curve,
+     yPlotpoints=50,xPlotpoints=80,
+     linewidth=0.3pt](-4,4)(-4,4){\func}
+  \pstThreeDCoor[xMin=-1,xMax=5,yMin=-1,
+                 yMax=5,zMin=-1,zMax=3.5,linewidth=0.2pt]
+\end{pspicture}
+%{\scriptsize $z(x,y)=10\left(x^3+xy^4-\frac{x}{5}\right)e^{-(x^2+y^2)}+e^{-\left((x-1.225)^2+y^2\right)}$}
+%\end{figure}
+\end{document}
